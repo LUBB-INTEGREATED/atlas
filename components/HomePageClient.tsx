@@ -28,6 +28,7 @@ import {
   SectionLabel,
   ServiceCard,
 } from './FlowElements';
+import { HeroVideoClean } from './HeroVideoClean';
 import { ATLAS_IMAGES } from '@/src/assets/images';
 import { company, getObtainedCertificates } from '@/src/config/company';
 import { nl, type ServiceCategory } from '@/src/content/nl';
@@ -45,9 +46,7 @@ export function HomePageClient() {
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const yLeftArch = useTransform(heroScroll, [0, 1], [0, -28]);
-  const yCenterArch = useTransform(heroScroll, [0, 1], [0, -40]);
-  const yRightArch = useTransform(heroScroll, [0, 1], [0, -20]);
+  const yVideo = useTransform(heroScroll, [0, 1], [0, 28]);
 
   // Services Segmented Control & Carousel
   const [activeCategory, setActiveCategory] = useState<ServiceCategory>('Operationeel');
@@ -127,32 +126,32 @@ export function HomePageClient() {
       </svg>
 
       {/* =====================================================================
-          1. HERO (cream-light)
+          1. HERO (cream-light) — CLEAN VIDEO BASED FIRST
       ===================================================================== */}
       <section
         ref={heroRef}
-        className="relative z-10 pt-36 sm:pt-44 pb-20 sm:pb-28 bg-[var(--cream-light)] bg-film-grain overflow-hidden"
+        className="relative z-10 pt-32 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 lg:pb-28 bg-[var(--cream-light)] bg-film-grain overflow-hidden"
       >
-        {/* Hero Flow Line passing behind the three arches */}
+        {/* Subtle Decorative Flow Line in the background */}
         <svg
-          viewBox="0 0 1440 420"
+          viewBox="0 0 1440 480"
           fill="none"
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-16 left-0 w-full h-[320px] sm:h-[380px] z-0"
+          className="pointer-events-none absolute top-28 sm:top-24 left-0 w-full h-[360px] sm:h-[440px] z-0 opacity-80"
         >
           <motion.path
-            d="M -40 250 C 260 90, 560 350, 880 190 C 1120 70, 1310 210, 1480 140"
+            d="M -60 180 C 280 40, 580 320, 920 160 C 1180 40, 1340 220, 1500 130"
             stroke="#F4721E"
             strokeWidth="2.5"
             strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.6, delay: 0.25, ease: CALM_EASE }}
+            transition={{ duration: 1.8, delay: 0.2, ease: CALM_EASE }}
           />
         </svg>
 
         <div className="relative z-10 max-w-[1320px] mx-auto px-4 sm:px-6">
-          {/* Centred Hero Typography */}
+          {/* Centered Calm Typography */}
           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -167,23 +166,24 @@ export function HomePageClient() {
               before={nl.hero.headlineBefore}
               italic={nl.hero.headlineItalic}
               after={nl.hero.headlineAfter}
-              className="mt-5 text-[clamp(3.25rem,8vw,7.5rem)] text-[var(--blue)]"
+              className="mt-4 sm:mt-5 text-[clamp(2.75rem,7vw,6.5rem)] text-[var(--blue)] font-display font-light leading-[1.04]"
             />
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.22, ease: CALM_EASE }}
-              className="mt-6 text-[1.15rem] sm:text-[1.25rem] leading-[1.6] text-[var(--ink)]/85 max-w-2xl"
+              transition={{ duration: 0.8, delay: 0.2, ease: CALM_EASE }}
+              className="mt-5 sm:mt-6 text-[1.125rem] sm:text-[1.25rem] leading-[1.65] text-[var(--ink)]/85 max-w-2xl font-sans"
             >
               {nl.hero.lead}
             </motion.p>
 
+            {/* Clean Action Row: Primary Quote + Secondary Services + Direct Phone */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.34, ease: CALM_EASE }}
-              className="mt-9 flex flex-wrap items-center justify-center gap-4"
+              transition={{ duration: 0.8, delay: 0.32, ease: CALM_EASE }}
+              className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4"
             >
               <CalmButton href="/offerte-aanvragen" variant="primary">
                 {nl.hero.primaryCta}
@@ -191,58 +191,67 @@ export function HomePageClient() {
               <CalmButton href="/diensten" variant="secondary">
                 {nl.hero.secondaryCta}
               </CalmButton>
-            </motion.div>
-          </div>
-
-          {/* Three Arch-Framed Images Side by Side (Centre Tallest) */}
-          <div className="relative mt-14 sm:mt-20 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
-            {/* Left Arch: Traffic controller at golden hour */}
-            <motion.div style={{ y: yLeftArch }} className="md:col-span-4">
-              <ArchImage
-                src={nl.hero.arches[0].image}
-                alt={nl.hero.arches[0].alt}
-                aspectClass="aspect-[3/3.7]"
-                priority
-                delay={0.1}
-                className="shadow-calm border border-[var(--line)]"
-              />
-            </motion.div>
-
-            {/* Centre Arch (Tallest): Calm road works site */}
-            <motion.div style={{ y: yCenterArch }} className="md:col-span-4">
-              <ArchImage
-                src={nl.hero.arches[1].image}
-                alt={nl.hero.arches[1].alt}
-                aspectClass="aspect-[3/4.35]"
-                priority
-                delay={0.22}
-                className="shadow-calm-lg border border-[var(--line)]"
-              />
-            </motion.div>
-
-            {/* Right Arch: Glossy 3D orange cone on a cream plinth + Floating Glass Chip */}
-            <motion.div style={{ y: yRightArch }} className="md:col-span-4 relative">
-              {/* Floating Glass Chip */}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.85, delay: 0.55, ease: CALM_EASE }}
-                className="absolute -top-5 right-4 sm:right-6 z-20 inline-flex items-center gap-2.5 rounded-full px-4 py-2.5 bg-[var(--porcelain)]/75 backdrop-blur-md border border-[var(--line)] shadow-calm text-xs sm:text-[13px] font-medium text-[var(--ink)]"
+              <a
+                href={company.phoneHref}
+                className="inline-flex items-center gap-2.5 h-14 px-6 rounded-full border border-[var(--sand)] bg-[var(--porcelain)]/80 hover:bg-[var(--cream)] text-[var(--ink)] font-medium text-[15px] transition-all shadow-sm group"
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-[var(--ok)] shrink-0" aria-hidden="true" />
-                <span>{nl.hero.chipText}</span>
-              </motion.div>
-
-              <ArchImage
-                src={nl.hero.arches[2].image}
-                alt={nl.hero.arches[2].alt}
-                aspectClass="aspect-[3/3.5]"
-                priority
-                delay={0.34}
-                className="shadow-calm border border-[var(--line)]"
-              />
+                <span className="w-2.5 h-2.5 rounded-full bg-[var(--ok)] animate-pulse shrink-0" aria-hidden="true" />
+                <span className="text-[var(--blue)] group-hover:text-[var(--ink)] transition-colors">
+                  {company.phoneDisplay}
+                </span>
+                <span className="text-xs text-[var(--blue)]/70 hidden sm:inline">· 24/7 bereikbaar</span>
+              </a>
             </motion.div>
           </div>
+
+          {/* Grand Clean Video Centerpiece */}
+          <motion.div
+            style={{ y: yVideo }}
+            initial={{ opacity: 0, scale: 0.98, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.4, ease: CALM_EASE }}
+            className="mt-12 sm:mt-16 lg:mt-20 max-w-[1240px] mx-auto"
+          >
+            <HeroVideoClean />
+          </motion.div>
+
+          {/* Under-Video Calm Trust Markers — Clear, unboxed, uncluttered */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.55, ease: CALM_EASE }}
+            className="mt-10 sm:mt-12 max-w-4xl mx-auto pt-6 border-t border-[var(--sand)]/60 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center"
+          >
+            <div className="flex items-center justify-center sm:justify-start gap-3 text-left">
+              <div className="w-9 h-9 rounded-full bg-[var(--cream)] border border-[var(--sand)] flex items-center justify-center shrink-0 text-[var(--blue)]">
+                <ShieldCheck className="w-4 h-4" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="font-semibold text-sm text-[var(--ink)]">145+ Beroepsregelaars</p>
+                <p className="text-xs text-[var(--blue)]">Volledig gecertificeerd & VCA</p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center sm:justify-center gap-3 text-left">
+              <div className="w-9 h-9 rounded-full bg-[var(--cream)] border border-[var(--sand)] flex items-center justify-center shrink-0 text-[var(--blue)]">
+                <Clock className="w-4 h-4" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="font-semibold text-sm text-[var(--ink)]">Snelle inzet</p>
+                <p className="text-xs text-[var(--blue)]">Binnen 24 uur geregeld</p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center sm:justify-end gap-3 text-left">
+              <div className="w-9 h-9 rounded-full bg-[var(--cream)] border border-[var(--sand)] flex items-center justify-center shrink-0 text-[var(--blue)]">
+                <Phone className="w-4 h-4" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="font-semibold text-sm text-[var(--ink)]">Landelijk actief</p>
+                <p className="text-xs text-[var(--blue)]">24/7 bereikbaar voor spoed</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

@@ -1,0 +1,87 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/diensten/[slug]",
+      "regex": "^/diensten/([^/]+?)(?:/)?$",
+      "routeKeys": { "nxtPslug": "nxtPslug" },
+      "namedRegex": "^/diensten/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/werken-bij/[slug]",
+      "regex": "^/werken\\-bij/([^/]+?)(?:/)?$",
+      "routeKeys": { "nxtPslug": "nxtPslug" },
+      "namedRegex": "^/werken\\-bij/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/algemene-voorwaarden",
+      "regex": "^/algemene\\-voorwaarden(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/algemene\\-voorwaarden(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/diensten",
+      "regex": "^/diensten(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/diensten(?:/)?$"
+    },
+    {
+      "page": "/offerte-aanvragen",
+      "regex": "^/offerte\\-aanvragen(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/offerte\\-aanvragen(?:/)?$"
+    },
+    {
+      "page": "/opleidingen",
+      "regex": "^/opleidingen(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/opleidingen(?:/)?$"
+    },
+    {
+      "page": "/over-ons",
+      "regex": "^/over\\-ons(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/over\\-ons(?:/)?$"
+    },
+    {
+      "page": "/privacy",
+      "regex": "^/privacy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/privacy(?:/)?$"
+    },
+    {
+      "page": "/werken-bij",
+      "regex": "^/werken\\-bij(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/werken\\-bij(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-next-postponed",
+    "contentTypeHeader": "text/x-component"
+  },
+  "rewrites": []
+}

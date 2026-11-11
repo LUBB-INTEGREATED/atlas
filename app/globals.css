@@ -44,7 +44,6 @@ html {
   background-color: var(--cream-light);
   color: var(--ink);
   font-family: var(--font-figtree), system-ui, -apple-system, sans-serif;
-  scroll-behavior: smooth;
   overflow-x: clip;
 }
 
