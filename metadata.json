@@ -1,0 +1,6 @@
+{
+  "name": "Atlas Holland B.V. — Verkeersveiligheid & Verkeersregelaars",
+  "description": "Gecertificeerde verkeersregelaars, tijdelijke verkeersmaatregelen, verkeersplannen en veiligheidsbegeleiding voor infra, bouw, evenementen en calamiteiten in heel Nederland.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

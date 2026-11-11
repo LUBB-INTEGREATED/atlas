@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --cream: #E9D9CA;
+  --cream-light: #F5EDE4;
+  --porcelain: #FBF7F2;
+  --sand: #D9C5B2;
+  --blue: #4D6080;
+  --blue-deep: #36455F;
+  --ink: #1E2638;
+  --orange: #F4721E;
+  --orange-hover: #E0611A;
+  --orange-ink: #9E4410;
+  --line: rgba(77, 96, 128, 0.18);
+  --line-dark: rgba(233, 217, 202, 0.16);
+  --ok: #3E9B6E;
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-light: var(--cream-light);
+  --color-porcelain: var(--porcelain);
+  --color-sand: var(--sand);
+  --color-blue: var(--blue);
+  --color-blue-deep: var(--blue-deep);
+  --color-ink: var(--ink);
+  --color-orange: var(--orange);
+  --color-orange-hover: var(--orange-hover);
+  --color-orange-ink: var(--orange-ink);
+  --color-line: var(--line);
+  --color-line-dark: var(--line-dark);
+  --color-ok: var(--ok);
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-figtree), system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--cream-light);
+  color: var(--ink);
+  font-family: var(--font-figtree), system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--cream-light);
+  color: var(--ink);
+  overflow-x: clip;
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fraunces Display Typography Rules */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 72;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+/* Subtle warm film grain overlay (2.5% opacity) */
+.bg-film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.028'/%3E%3C/svg%3E");
+}
+
+/* Soft blue-tinted elevation shadow */
+.shadow-calm {
+  box-shadow: 0 30px 60px -30px rgba(54, 69, 95, 0.25);
+}
+
+.shadow-calm-lg {
+  box-shadow: 0 40px 80px -28px rgba(54, 69, 95, 0.32);
+}
+
+/* Arch mask geometry: fully rounded top, 28px bottom corners */
+.arch-frame {
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* Hide scrollbars on horizontal carousels while keeping keyboard/touch scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
